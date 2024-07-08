@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_forecast/functioning/country_data.dart';
 import 'package:weather_forecast/functioning/get_weather.dart';
 import 'package:weather_forecast/pages/page2.dart';
 import 'package:weather_forecast/widgets/textfield.dart';
@@ -20,7 +21,11 @@ class _Page1State extends State<Page1> {
   String temp_display= '';
   String humid_display='';
   String main_condition='';
-  // double? temp,humidity;
+  String country_code='';
+  double temp=0;
+  double longitude=0;
+  int humidity=0, pressure=0;
+
 
   TextEditingController nameController = TextEditingController();
   TextEditingController cityController = TextEditingController();
@@ -39,12 +44,19 @@ class _Page1State extends State<Page1> {
         print("Successful Connection");
         String data = response.body;
         var decodedData = jsonDecode(data);
-        temp_display=  decodedData['main']['temp'].toString();
-        humid_display = decodedData['main']['humidity'].toString();
+
+        setState(() {
+        temp= decodedData['main']['temp'];
+        humidity= decodedData['main']['humidity'];
+        pressure= decodedData['main']['pressure'];
         main_condition= decodedData['weather'][0]['main'];
-        print(temp_display);
-        print(humid_display);
+        longitude = decodedData['coord']['lon'];
+        country_code= decodedData['sys']['country'];
+        });
+
         print(main_condition);
+        print(country_code);
+        print(longitude);
 
       } else {
         setState(() {
@@ -68,19 +80,19 @@ class _Page1State extends State<Page1> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Field(description_text: 'Enter your Name', controller: nameController),
+          //Field(description_text: 'Enter your Name', controller: nameController),
           Field(description_text: "Enter your city",controller: cityController,),
           SizedBox(height: MediaQuery.of(context).size.height *0.03,),
           ElevatedButton(onPressed: (){
             fetchWeatherData();
-            // Navigator.of(context).push
-            //   (MaterialPageRoute(
-            //     builder: (context)=> Page2()));
+            Navigator.of(context).push
+              (MaterialPageRoute(
+                builder: (context)=>Page2(temp: temp, humidity: humidity,
+                    pressure: pressure, main_condition: main_condition),
+            ));
           }, child: Text("Search")),
-          Text(humid_display),
-          Text(temp_display),
-
-          Text(main_condition),
+          //Text(get_coord(longitude)),
+          // Text(get_coord(longitude).toString())
         ],
       ),
     );
