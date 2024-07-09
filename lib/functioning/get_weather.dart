@@ -8,7 +8,7 @@ get_temp(temp,val){
     return temp_in_celsius;
   }
   else if(val==2){
-    String temp_in_fahren= ((temp*1.8)-459.67).toStringAsFixed(3);
+    String temp_in_fahren= ((temp*1.8)-459.67).toStringAsFixed(2);
     return temp_in_fahren;
   }
 }
