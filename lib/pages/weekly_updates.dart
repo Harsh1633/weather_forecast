@@ -1,108 +1,54 @@
+
 import 'package:flutter/material.dart';
-import 'package:weather_forecast/functioning/get_date.dart';
+import 'package:weather_forecast/functioning/get_weekly.dart';
+import 'package:weather_forecast/pages/page1.dart';
+import 'package:weather_forecast/widgets/weekly_field.dart';
 
 class Weekly extends StatefulWidget {
-  const Weekly({super.key});
+  const Weekly({Key? key}) : super(key: key);
 
   @override
-  State<Weekly> createState() => _WeeklyState();
+  _WeeklyState createState() => _WeeklyState();
 }
 
 class _WeeklyState extends State<Weekly> {
+  late Future<List<WeeklyField>> weeklyDataFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    weeklyDataFuture = getWeeklyData(city_getter());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
-              child: Text(
-                "Location",
-                style: TextStyle(
-                    color: Colors.blue[700],
-                    fontSize: 23,
-                    fontFamily: "Crimson"),
-              ),
+            Container(width: 200,height: 200,color: Colors.greenAccent,),
+            FutureBuilder<List<WeeklyField>>(
+              future: weeklyDataFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Center(child: Text('No data available'));
+                } else {
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return snapshot.data![index];
+                      },
+                    ),
+                  );
+                }
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  ),
-                  SizedBox(width: 15,),
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  ),
-                  SizedBox(width: 15,),
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  ),
-                  SizedBox(width: 15,),
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.45,
-                      height: MediaQuery.of(context).size.height / 4,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
-                        borderRadius: BorderRadius.circular(10),
-                      )
-                  )
-                ],
-              ),
-            )
-
           ],
         ),
       ),

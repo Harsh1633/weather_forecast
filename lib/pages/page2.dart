@@ -28,6 +28,7 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
+  var now = DateTime.now();
   @override
   Widget build(BuildContext context) {
    double temp_in_k= double.parse((widget.temp_in_c + 273.15).toStringAsPrecision(5));
@@ -57,7 +58,7 @@ class _Page2State extends State<Page2> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10, 5, 0, 0),
                           child: Text(
-                            get_date(),
+                            get_date(date:now),
                             style: TextStyle(
                                 color: Colors.blue[700],
                                 fontSize: 30,
@@ -71,7 +72,6 @@ class _Page2State extends State<Page2> {
                           Navigator.of(context).push
                             (MaterialPageRoute(
                               builder: (context)=> Weekly()));
-                          getWeeklyData();
                         },
                        style: ButtonStyle(
                          backgroundColor: MaterialStateProperty.all<Color>(Colors.blue)

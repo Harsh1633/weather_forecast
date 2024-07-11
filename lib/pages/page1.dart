@@ -7,6 +7,7 @@ import 'dart:convert';
 
 const API_KEY = '28792283d0791c289411e6c81fad5c11';
 
+TextEditingController cityController = TextEditingController();
 class Page1 extends StatefulWidget {
   const Page1({super.key});
 
@@ -22,7 +23,9 @@ class _Page1State extends State<Page1> {
 
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
+  //TextEditingController cityController = TextEditingController();
+
+
 
 
   @override
@@ -85,14 +88,17 @@ class _Page1State extends State<Page1> {
                     temp_in_c: temp_in_c ?? 0.0, temp_in_f: temp_in_f ?? 0.0,
                     wind_mph: wind_mph ?? 0.0, pressure_mb: pressure_mb ?? 0.0,
                     humidity: humidity ?? 0, city: city,
-                    country: country ?? 'Unavailable', main_condition: main_condition ?? 'Unavailable',
+                    country: country ?? '', main_condition: main_condition ?? '',
                 username: nameController.text,),
             ));
           }, child: Text("Search")),
-          //Text(get_coord(longitude)),
-          // Text(get_coord(longitude).toString())
         ],
       ),
     );
   }
+}
+
+
+String city_getter(){
+  return cityController.text;
 }

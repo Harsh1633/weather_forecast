@@ -4,6 +4,9 @@ get_animation(String main_condition){
     return 'sunny.json';
 
   }
+  else if(main_condition.contains('thunder')){
+    return 'thunder.json';
+  }
   else if(main_condition.contains('rain')||main_condition.contains('sleet')||
       main_condition.contains('drizzle')){
     return 'rain_new.json';
