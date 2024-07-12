@@ -7,9 +7,9 @@ import 'package:weather_forecast/widgets/weekly_field.dart';
 
 Future<List<WeeklyField>> getWeeklyData(String city) async {
   try {
-    String second_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$city&days=7";
+    String weekly_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$city&days=7";
 
-    final response = await http.get(Uri.parse(second_url));
+    final response = await http.get(Uri.parse(weekly_url));
     print(response.statusCode);
 
     if (response.statusCode == 200) {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:weather_forecast/functioning/get_date_for_weekly.dart';
-import 'dart:convert';
 
 import 'package:weather_forecast/functioning/get_icon.dart';
 
@@ -38,6 +36,7 @@ class _WeeklyFieldState extends State<WeeklyField> {
           trailing: Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
             child: Container(
+              //color: Colors.red,
                 child: Image.asset('assets/icons/display/${get_icon(widget.condition)}',)),
           ),
           title: Text(widget.condition,

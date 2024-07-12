@@ -26,8 +26,6 @@ class _Page1State extends State<Page1> {
   //TextEditingController cityController = TextEditingController();
 
 
-
-
   @override
   void initState() {
     super.initState();
