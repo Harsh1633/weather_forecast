@@ -30,8 +30,7 @@ class _Page1State extends State<Page1> {
 
   Future<void> fetchWeatherData1({required String city}) async {
     try {
-      String second_url =
-          "http://api.weatherapi.com/v1/current.json?key=d771530ea2c04342a4a114808240807&q=$city";
+      String second_url =  "http://api.weatherapi.com/v1/current.json?key=d771530ea2c04342a4a114808240807&q=$city";
       final second_response = await http.get(Uri.parse(second_url));
 
       if (second_response.statusCode == 200) {
@@ -77,29 +76,29 @@ class _Page1State extends State<Page1> {
           Field(description_text: "Enter your city", controller: cityController),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           ElevatedButton(
-            onPressed: () async {
-              await fetchWeatherData1(city: city);
-              if (showWeatherDetails) {
-                setState(() {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => Page2(
-                        lat: lat ?? 0.0,
-                        lon: lon ?? 0.0,
-                        temp_in_c: temp_in_c ?? 0.0,
-                        temp_in_f: temp_in_f ?? 0.0,
-                        wind_mph: wind_mph ?? 0.0,
-                        pressure_mb: pressure_mb ?? 0.0,
-                        humidity: humidity ?? 0,
-                        city: city,
-                        country: country ?? '',
-                        main_condition: main_condition ?? '',
-                        username: nameController.text,
+            onPressed: () {
+              setState(() async {
+                await fetchWeatherData1(city: city);
+                if (showWeatherDetails) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Page2(
+                          lat: lat ?? 0.0,
+                          lon: lon ?? 0.0,
+                          temp_in_c: temp_in_c ?? 0.0,
+                          temp_in_f: temp_in_f ?? 0.0,
+                          wind_mph: wind_mph ?? 0.0,
+                          pressure_mb: pressure_mb ?? 0.0,
+                          humidity: humidity ?? 0,
+                          city: city,
+                          country: country ?? '',
+                          main_condition: main_condition ?? '',
+                          username: nameController.text,
+                        ),
                       ),
-                    ),
-                  );
-                });
-              }
+                    );
+                }
+              });
             },
             child: const Text("Search"),
           ),

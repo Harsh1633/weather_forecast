@@ -14,7 +14,6 @@ class _FieldState extends State<Field> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-
         SizedBox(height: MediaQuery.of(context).size.height *0.03,),
         Align(
             alignment: Alignment.topLeft,
