@@ -22,14 +22,14 @@ class Field extends StatelessWidget {
                   fontFamily: "Crimson"
 
               ),),
-              Container(height: 25, width: 25,
+              SizedBox(height: 25, width: 25,
                 child: Image.asset('assets/icons/$info_image'),)
             ],
 
           ),
         ),
         Text(value.toString(), style: TextStyle(
-            color: Color.fromRGBO(203, 195, 227, 1),
+            color: const Color.fromRGBO(203, 195, 227, 1),
             fontSize: fontsize
         ))
 

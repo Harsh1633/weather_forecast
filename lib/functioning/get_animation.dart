@@ -1,17 +1,17 @@
-get_animation(String main_condition){
-  main_condition= main_condition.toLowerCase();
-  if (main_condition.contains('clear')||main_condition.contains('sunny') ){
+getAnimation(String mainCondition){
+  mainCondition= mainCondition.toLowerCase();
+  if (mainCondition.contains('clear')||mainCondition.contains('sunny') ){
     return 'sunny.json';
 
   }
-  else if(main_condition.contains('thunder')){
+  else if(mainCondition.contains('thunder')){
     return 'thunder.json';
   }
-  else if(main_condition.contains('rain')||main_condition.contains('sleet')||
-      main_condition.contains('drizzle')){
+  else if(mainCondition.contains('rain')||mainCondition.contains('sleet')||
+      mainCondition.contains('drizzle')){
     return 'rain_new.json';
   }
-  else if(main_condition.contains('snow')){
+  else if(mainCondition.contains('snow')){
     return 'snowy.json';
   }
   else{

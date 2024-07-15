@@ -6,9 +6,6 @@ import 'package:weather_forecast/functioning/get_weekly.dart';
 import 'package:weather_forecast/pages/page1.dart';
 import 'package:weather_forecast/widgets/hourly_field.dart';
 import 'package:weather_forecast/widgets/weekly_field.dart';
-import 'package:http/http.dart' as http;
-
-// String weekly_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=${city_getter()}&days=7";
 
 
 class Weekly extends StatefulWidget {
@@ -41,17 +38,17 @@ class _WeeklyState extends State<Weekly> {
           children: [
             Row(
               children: [
-                Container(child: Icon(Icons.location_on_outlined,color: Colors.white,),),
-                SizedBox(width: 10,),
+                const Icon(Icons.location_on_outlined,color: Colors.white,),
+                const SizedBox(width: 10,),
                 Text(city_getter().toPascalCase(),
-                  style: TextStyle(color: Colors.blueAccent,
+                  style: const TextStyle(color: Colors.blueAccent,
                       fontSize: 35,
                       fontFamily: "Cormorant",
                   fontWeight: FontWeight.bold),)
               ],
             ),
-            SizedBox(height: 25,),
-            Text("Current",
+            const SizedBox(height: 25,),
+            const Text("Current",
               style: TextStyle(
                 color: Colors.white,
                 fontFamily: 'Crimson',
@@ -62,11 +59,11 @@ class _WeeklyState extends State<Weekly> {
               future: hourlyDataFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No data available'));
+                  return const Center(child: Text('No data available'));
                 } else {
                   return SizedBox(
                     height: 250,
@@ -81,8 +78,8 @@ class _WeeklyState extends State<Weekly> {
                 }
               },
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 15, 8,5),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(8, 15, 8,5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -100,11 +97,11 @@ class _WeeklyState extends State<Weekly> {
               future: weeklyDataFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
+                  return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Center(child: Text('No data available'));
+                  return const Center(child: Text('No data available'));
                 } else {
                   return Expanded(
                     child: ListView.builder(

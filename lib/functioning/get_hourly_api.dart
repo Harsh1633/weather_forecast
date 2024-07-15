@@ -5,26 +5,26 @@ import 'dart:convert';
 import 'package:weather_forecast/widgets/hourly_field.dart';
 
 
-getHourlyData() async {
-  String city = 'Mumbai';
-
-  String weekly_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$city&days=7";
-
-  final response = await http.get(Uri.parse(weekly_url));
-  print(response.statusCode);
-
-  if (response.statusCode == 200) {
-    print("Connection Success for Hourly API");
-    var hourly_decodedData = jsonDecode(response.body);
-
-
-    for (int i = 0; i < 24; i++) {
-      String hour = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['time'];
-      double temp_in_c = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['temp_c'];
-      String main_condition = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['condition']['text'];
-    }
-  }
-}
+// getHourlyData() async {
+//   String city = 'Mumbai';
+//
+//   String weekly_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$city&days=7";
+//
+//   final response = await http.get(Uri.parse(weekly_url));
+//   print(response.statusCode);
+//
+//   if (response.statusCode == 200) {
+//     print("Connection Success for Hourly API");
+//     var hourly_decodedData = jsonDecode(response.body);
+//
+//
+//     for (int i = 0; i < 24; i++) {
+//       String hour = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['time'];
+//       double temp_in_c = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['temp_c'];
+//       String main_condition = hourly_decodedData['forecast']['forecastday'][0]['hour'][i]['condition']['text'];
+//     }
+//   }
+// }
 
 Future<List<HourlyField>> getdata() async {
   try {
@@ -54,7 +54,7 @@ Future<List<HourlyField>> getdata() async {
     }
   }
   catch (e) {
-    print('Error: $e');
+    //print('Error: $e');
   }
   return [];
 }

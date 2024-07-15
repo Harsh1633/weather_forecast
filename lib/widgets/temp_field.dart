@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 class TempField extends StatelessWidget {
-  String temp_unit,temp_value;
-  TempField({super.key, required this.temp_unit, required this.temp_value});
+  final String temp_unit,temp_value;
+  const TempField({super.key, required this.temp_unit, required this.temp_value});
 
   @override
   Widget build(BuildContext context) {
@@ -12,14 +13,14 @@ class TempField extends StatelessWidget {
           Container(
             width: 100,
             height: 60,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 //borderRadius: BorderRadius.circular(10),
                 color: Colors.black),
             child: TextButton(
               onPressed: () {},
               child: Text(
                 temp_value,
-                style: TextStyle(fontSize: 22),
+                style: const TextStyle(fontSize: 22),
               ),
             ),
           ),

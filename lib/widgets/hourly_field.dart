@@ -40,12 +40,12 @@ class _HourlyFieldState extends State<HourlyField> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(4, 3, 0, 0),
                     child: Text("${widget.avg_temp_in_c.toString()} ",
-                      style: TextStyle(color: Colors.white,
+                      style: const TextStyle(color: Colors.white,
                         fontSize: 30,
                         fontFamily: 'Crimson',
                       ),),
                   ),
-                  Container(height: 25, width: 25,
+                  SizedBox(height: 25, width: 25,
                         child: Image.asset('assets/icons/celsius.png'),)
 
                 ],
@@ -53,15 +53,15 @@ class _HourlyFieldState extends State<HourlyField> {
             ),
             Text(get_formatted_text(widget.condition) ,
                 textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.blue,fontSize: 25,fontFamily: 'Crimson'),),
+              style: const TextStyle(color: Colors.blue,fontSize: 25,fontFamily: 'Crimson'),),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
-              child: Container(
+              child: SizedBox(
                 width: 50,height: 50,
                   child: Image.asset('assets/icons/display/${get_icon(widget.condition)}',)),
             ),
             Text(widget.date.substring(widget.date.length-5),
-            style: TextStyle(color: Colors.white,fontSize: 25,fontFamily: 'Crimson'),)
+            style: const TextStyle(color: Colors.white,fontSize: 25,fontFamily: 'Crimson'),)
           ],
         ),
       ),

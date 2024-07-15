@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_forecast/functioning/get_date_for_weekly.dart';
 import 'dart:convert';
 
 import 'package:weather_forecast/widgets/weekly_field.dart';
@@ -10,10 +8,10 @@ Future<List<WeeklyField>> getWeeklyData(String city) async {
     String weekly_url = "http://api.weatherapi.com/v1/forecast.json?key=d771530ea2c04342a4a114808240807&q=$city&days=7";
 
     final response = await http.get(Uri.parse(weekly_url));
-    print(response.statusCode);
+    //print(response.statusCode);
 
     if (response.statusCode == 200) {
-      print("Connection Success for Weekly API");
+      //print("Connection Success for Weekly API");
       var weekly_decodedData = jsonDecode(response.body);
 
       List<WeeklyField> weeklyFields = [];
@@ -42,7 +40,7 @@ Future<List<WeeklyField>> getWeeklyData(String city) async {
     }
   }
   catch (e) {
-    print('Error: $e');
+    //print('Error: $e');
   }
  return [];
 }

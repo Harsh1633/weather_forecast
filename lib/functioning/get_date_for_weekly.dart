@@ -45,6 +45,5 @@ get_StringDate(String date1){
     default:
       month = 'Invalid month';
   }
-  print("$day $month");
   return "$day $month" ;
 }
