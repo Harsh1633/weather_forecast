@@ -133,9 +133,9 @@ class _Page2State extends State<Page2> {
                 ),
                 child: Row(
                   children: [
-                    TempField(temp_unit: '°Celsius', temp_value: widget.temp_in_c.toString()),
-                    TempField(temp_unit: '°Fahrenheit', temp_value: widget.temp_in_f.toString()),
-                    TempField(temp_unit: 'Kelvin', temp_value: temp_in_k.toString()),
+                    TempField(unit: '°Celsius', value: widget.temp_in_c.toString()),
+                    TempField(unit: '°Fahrenheit', value: widget.temp_in_f.toString()),
+                    TempField(unit: 'Kelvin', value: temp_in_k.toString()),
                   ],
                 ),
               )

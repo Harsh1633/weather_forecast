@@ -1,34 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:weather_forecast/core/colors/app_colors.dart';
+
 class TempField extends StatelessWidget {
-  String temp_unit,temp_value;
-  TempField({super.key, required this.temp_unit, required this.temp_value});
+  String unit, value;
+
+  TempField({super.key, required this.unit, required this.value});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+      padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
       child: Column(
         children: [
-          Container(
-            width: 100,
-            height: 60,
-            decoration: BoxDecoration(
-                //borderRadius: BorderRadius.circular(10),
-                color: Colors.black),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                temp_value,
-                style: TextStyle(fontSize: 22),
-              ),
-            ),
+          Text(
+            value,
+            style: TextStyle(fontSize: 25,color: Colors.white,fontWeight: FontWeight.w500, fontFamily: 'Crimson'),
           ),
-          Text(temp_unit,
+          Text(
+            unit,
             style: TextStyle(
-                color: Colors.blue[700],
-                fontSize: 25,
-                //fontWeight: FontWeight.bold,
-            fontFamily: 'Crimson'),)
+                color: AppColors.darkSubText,
+                fontSize: 20,
+                // fontWeight: FontWeight.w500,
+                fontFamily: 'Crimson'),
+          )
         ],
       ),
     );
