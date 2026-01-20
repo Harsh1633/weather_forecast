@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_dashboard_notifier.dart';
+part of 'search_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appDashboardNotifierHash() =>
-    r'7536472bd1a6f4083d4bbb84f37b136d419b0342';
+String _$searchNotifierHash() => r'c5c14fe72922be3c884b91dfb516c069fd48c425';
 
-/// See also [AppDashboardNotifier].
-@ProviderFor(AppDashboardNotifier)
-final appDashboardNotifierProvider =
-    AutoDisposeNotifierProvider<AppDashboardNotifier, int>.internal(
-  AppDashboardNotifier.new,
-  name: r'appDashboardNotifierProvider',
+/// See also [SearchNotifier].
+@ProviderFor(SearchNotifier)
+final searchNotifierProvider =
+    AutoDisposeNotifierProvider<SearchNotifier, int>.internal(
+  SearchNotifier.new,
+  name: r'searchNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$appDashboardNotifierHash,
+      : _$searchNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AppDashboardNotifier = AutoDisposeNotifier<int>;
+typedef _$SearchNotifier = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

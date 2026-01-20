@@ -21,7 +21,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF152334),
+      backgroundColor:AppColors.primaryBlue,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -147,14 +147,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
+                    SizedBox(width: 5,),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: MediaQuery.of(context).size.height * 0.29,
                       decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(6,6),
+                              blurRadius: 12,
+                              color: AppColors.tempColor2.withOpacity(0.5)
+                          ),
+                          BoxShadow(
+                              offset: Offset(-6,-6),
+                              blurRadius: 12,
+                              color: AppColors.tempColor1.withOpacity(0.25)
+                          )
+                        ],
+                        gradient: LinearGradient(
+                          colors: [
+                            AppColors.tempColor1,AppColors.tempColor2
+                          ]
+                        ),
+                        border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Column(
+                      child: const Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Field(info: 'Humidity ', info_image: 'precipitation.png',
@@ -175,7 +193,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               width: MediaQuery.of(context).size.width * 0.5,
                               height: MediaQuery.of(context).size.height * 0.13,
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue,width: 1),
+                                boxShadow: [
+                                  BoxShadow(
+                                      offset: Offset(6,6),
+                                      blurRadius: 12,
+                                      color: AppColors.tempColor2.withOpacity(0.5)
+                                  ),
+                                  BoxShadow(
+                                      offset: Offset(-6,-6),
+                                      blurRadius: 12,
+                                      color: AppColors.tempColor1.withOpacity(0.25)
+                                  )
+                                ],
+                                gradient: LinearGradient(
+                                    colors: [
+                                      AppColors.tempColor1,AppColors.tempColor2
+                                    ]
+                                ),
+                                border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Column(
@@ -194,7 +229,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               width: MediaQuery.of(context).size.width * 0.5,
                               height: MediaQuery.of(context).size.height * 0.13,
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.blue,width: 1),
+                                boxShadow: [
+                                  BoxShadow(
+                                      offset: Offset(6,6),
+                                      blurRadius: 12,
+                                      color: AppColors.tempColor2.withOpacity(0.5)
+                                  ),
+                                  BoxShadow(
+                                      offset: Offset(-6,-6),
+                                      blurRadius: 12,
+                                      color: AppColors.tempColor1.withOpacity(0.25)
+                                  )
+                                ],
+                                gradient: LinearGradient(
+                                    colors: [
+                                      AppColors.tempColor1,AppColors.tempColor2
+                                    ]
+                                ),
+                                border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Column(

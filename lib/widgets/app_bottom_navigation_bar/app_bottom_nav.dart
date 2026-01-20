@@ -15,9 +15,9 @@ class _AppBottomNavState extends ConsumerState<AppBottomNav> {
 
   final List<IconData> _tabsIcon = [
     Icons.home,
-    Icons.search,
     Icons.list,
-    Icons.settings
+    Icons.search,
+    // Icons.settings
   ];
   @override
   Widget build(BuildContext context) {

@@ -12,4 +12,7 @@ class AppColors{
   static const Color tempColor1 = Color(0xFF273549);
   static const Color tempColor2 = Color(0xFF121E2D);
   static const Color darkSubText = Color(0xFF7C91AE);
+  static const Color darkPrimary = Color(0xFFD7B845);
+  static const Color darkInput = Color(0xFF0C1622);
+  static const Color darkCard = Color(0xFFD7B845);
 }
