@@ -46,6 +46,7 @@ dependencies:
   geocoding:
   dio: ^5.9.0
   retrofit:
+  shimmer_animation:
 
 dev_dependencies:
   flutter_test:

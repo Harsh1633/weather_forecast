@@ -5,8 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:weather_forecast/core/colors/app_colors.dart';
 import 'package:weather_forecast/functioning/get_animation.dart';
 import 'package:weather_forecast/functioning/get_coordinate.dart';
-import 'package:weather_forecast/functioning/get_date.dart';
-import 'package:weather_forecast/pages/weekly_updates.dart';
+import 'package:weather_forecast/view/home/providers/home_notifier.dart';
 import 'package:weather_forecast/widgets/other_field.dart';
 import 'package:weather_forecast/widgets/temp_field.dart';
 
@@ -18,6 +17,17 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(homeNotifierProvider.notifier)
+          .getCurrentLocationData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,86 +191,83 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           Field(info: 'Pressure ', info_image: 'pressure-gauge.png',
                             value: "25",fontsize: 25,),
                         ],),),
-                    Container(
-                      //color: Colors.red,
-                      child: Column(
-                        //crossAxisAlignment: CrossAxisAlignment.start,
-                        //mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 5),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              height: MediaQuery.of(context).size.height * 0.13,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(6,6),
-                                      blurRadius: 12,
-                                      color: AppColors.tempColor2.withOpacity(0.5)
-                                  ),
-                                  BoxShadow(
-                                      offset: Offset(-6,-6),
-                                      blurRadius: 12,
-                                      color: AppColors.tempColor1.withOpacity(0.25)
-                                  )
-                                ],
-                                gradient: LinearGradient(
-                                    colors: [
-                                      AppColors.tempColor1,AppColors.tempColor2
-                                    ]
+                    Column(
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      //mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 0, 0, 5),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: MediaQuery.of(context).size.height * 0.13,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: Offset(6,6),
+                                    blurRadius: 12,
+                                    color: AppColors.tempColor2.withOpacity(0.5)
                                 ),
-                                border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
-                                borderRadius: BorderRadius.circular(10),
+                                BoxShadow(
+                                    offset: Offset(-6,-6),
+                                    blurRadius: 12,
+                                    color: AppColors.tempColor1.withOpacity(0.25)
+                                )
+                              ],
+                              gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.tempColor1,AppColors.tempColor2
+                                  ]
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Field(info: 'Coordinates ',
-                                    info_image: 'location.png',
-                                    value: get_coord(19.23,38.2), fontsize: 20,),
-                                ],
-                              ),
+                              border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Field(info: 'Coordinates ',
+                                  info_image: 'location.png',
+                                  value: get_coord(19.23,38.2), fontsize: 20,),
+                              ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              height: MediaQuery.of(context).size.height * 0.13,
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                      offset: Offset(6,6),
-                                      blurRadius: 12,
-                                      color: AppColors.tempColor2.withOpacity(0.5)
-                                  ),
-                                  BoxShadow(
-                                      offset: Offset(-6,-6),
-                                      blurRadius: 12,
-                                      color: AppColors.tempColor1.withOpacity(0.25)
-                                  )
-                                ],
-                                gradient: LinearGradient(
-                                    colors: [
-                                      AppColors.tempColor1,AppColors.tempColor2
-                                    ]
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            height: MediaQuery.of(context).size.height * 0.13,
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: Offset(6,6),
+                                    blurRadius: 12,
+                                    color: AppColors.tempColor2.withOpacity(0.5)
                                 ),
-                                border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
-                                borderRadius: BorderRadius.circular(10),
+                                BoxShadow(
+                                    offset: Offset(-6,-6),
+                                    blurRadius: 12,
+                                    color: AppColors.tempColor1.withOpacity(0.25)
+                                )
+                              ],
+                              gradient: LinearGradient(
+                                  colors: [
+                                    AppColors.tempColor1,AppColors.tempColor2
+                                  ]
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Field(info: 'Wind ', info_image: 'wind-power.png',
-                                    value: "${23.toString()} km/hr",fontsize: 25,),
-                                ],
-                              ),
+                              border: Border.all(color: AppColors.grayBorder.withOpacity(0.5), width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Field(info: 'Wind ', info_image: 'wind-power.png',
+                                  value: "${23.toString()} km/hr",fontsize: 25,),
+                              ],
                             ),
                           ),
+                        ),
 
-                        ],
-                      ),
+                      ],
                     )
 
                   ],

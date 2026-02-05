@@ -7,7 +7,7 @@ import 'package:weather_forecast/models/search_response_model.dart';
 
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: '')
+@RestApi(baseUrl: ApiEndpoints.apiEndpoint)
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 

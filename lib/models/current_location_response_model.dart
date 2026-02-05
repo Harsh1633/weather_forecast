@@ -29,22 +29,22 @@ class CurrentLocationResponseModel {
 }
 
 class Current {
-  int? lastUpdatedEpoch;
+  double? lastUpdatedEpoch;
   String? lastUpdated;
   double? tempC;
   double? tempF;
-  int? isDay;
+  double? isDay;
   Condition? condition;
   double? windMph;
   double? windKph;
-  int? windDegree;
+  double? windDegree;
   String? windDir;
-  int? pressureMb;
+  double? pressureMb;
   double? pressureIn;
-  int? precipMm;
-  int? precipIn;
-  int? humidity;
-  int? cloud;
+  double? precipMm;
+  double? precipIn;
+  double? humidity;
+  double? cloud;
   double? feelslikeC;
   double? feelslikeF;
   double? windchillC;
@@ -53,9 +53,9 @@ class Current {
   double? heatindexF;
   double? dewpointC;
   double? dewpointF;
-  int? visKm;
-  int? visMiles;
-  int? uv;
+  double? visKm;
+  double? visMiles;
+  double? uv;
   double? gustMph;
   double? gustKph;
 
@@ -92,22 +92,22 @@ class Current {
   });
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
-    lastUpdatedEpoch: json["last_updated_epoch"],
+    lastUpdatedEpoch: json["last_updated_epoch"]?.toDouble(),
     lastUpdated: json["last_updated"],
     tempC: json["temp_c"]?.toDouble(),
     tempF: json["temp_f"]?.toDouble(),
-    isDay: json["is_day"],
+    isDay: json["is_day"]?.toDouble(),
     condition: json["condition"] == null ? null : Condition.fromJson(json["condition"]),
     windMph: json["wind_mph"]?.toDouble(),
     windKph: json["wind_kph"]?.toDouble(),
-    windDegree: json["wind_degree"],
+    windDegree: json["wind_degree"]?.toDouble(),
     windDir: json["wind_dir"],
-    pressureMb: json["pressure_mb"],
+    pressureMb: json["pressure_mb"]?.toDouble(),
     pressureIn: json["pressure_in"]?.toDouble(),
-    precipMm: json["precip_mm"],
-    precipIn: json["precip_in"],
-    humidity: json["humidity"],
-    cloud: json["cloud"],
+    precipMm: json["precip_mm"]?.toDouble(),
+    precipIn: json["precip_in"]?.toDouble(),
+    humidity: json["humidity"]?.toDouble(),
+    cloud: json["cloud"]?.toDouble(),
     feelslikeC: json["feelslike_c"]?.toDouble(),
     feelslikeF: json["feelslike_f"]?.toDouble(),
     windchillC: json["windchill_c"]?.toDouble(),
@@ -116,9 +116,9 @@ class Current {
     heatindexF: json["heatindex_f"]?.toDouble(),
     dewpointC: json["dewpoint_c"]?.toDouble(),
     dewpointF: json["dewpoint_f"]?.toDouble(),
-    visKm: json["vis_km"],
-    visMiles: json["vis_miles"],
-    uv: json["uv"],
+    visKm: json["vis_km"]?.toDouble(),
+    visMiles: json["vis_miles"]?.toDouble(),
+    uv: json["uv"]?.toDouble(),
     gustMph: json["gust_mph"]?.toDouble(),
     gustKph: json["gust_kph"]?.toDouble(),
   );
@@ -159,7 +159,7 @@ class Current {
 class Condition {
   String? text;
   String? icon;
-  int? code;
+  double? code;
 
   Condition({
     this.text,
@@ -170,7 +170,7 @@ class Condition {
   factory Condition.fromJson(Map<String, dynamic> json) => Condition(
     text: json["text"],
     icon: json["icon"],
-    code: json["code"],
+    code: json["code"]?.toDouble(),
   );
 
   Map<String, dynamic> toJson() => {
@@ -187,7 +187,7 @@ class Location {
   double? lat;
   double? lon;
   String? tzId;
-  int? localtimeEpoch;
+  double? localtimeEpoch;
   String? localtime;
 
   Location({
@@ -208,7 +208,7 @@ class Location {
     lat: json["lat"]?.toDouble(),
     lon: json["lon"]?.toDouble(),
     tzId: json["tz_id"],
-    localtimeEpoch: json["localtime_epoch"],
+    localtimeEpoch: json["localtime_epoch"]?.toDouble(),
     localtime: json["localtime"],
   );
 
