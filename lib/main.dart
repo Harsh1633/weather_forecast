@@ -5,7 +5,7 @@ import 'package:weather_forecast/pages/page1.dart';
 import 'package:weather_forecast/view/app_dashboard/screen/app_dashboard_screen.dart';
 
 
-const API_KEY = '144d3bf745fe9b080033eb7202ca731d';
+const API_KEY = "d771530ea2c04342a4a114808240807";
 
 
 

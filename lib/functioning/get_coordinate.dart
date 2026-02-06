@@ -1,23 +1,27 @@
 
 get_coord(double latitude,double longitude){
-  String lat_dir='',lon_dir='';
+  String latDir='',lonDir='';
+
+  //latitude
   if(latitude>0){
-    lat_dir= "N";
+    latDir= "N";
   }
   else{
-    lat_dir= "S";
+    latDir= "S";
     latitude= latitude*(-1);
   }
 
-
+  //longitude
   if(longitude>0){
-    lon_dir= "W";
+    lonDir= "W";
   }
   else{
-    lon_dir="E";
+    lonDir="E";
     longitude= longitude*(-1);
   }
-    return "${latitude.toString()} °${lat_dir} , "
-        "${longitude.toString()} °${lon_dir}";
+
+
+  return "${latitude.toStringAsFixed(2)} °$latDir, "
+        "${longitude.toStringAsFixed(2)} °$lonDir";
   }
 
