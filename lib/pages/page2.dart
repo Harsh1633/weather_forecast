@@ -6,8 +6,8 @@ import 'package:weather_forecast/functioning/get_coordinate.dart';
 import 'package:weather_forecast/functioning/get_date.dart';
 import 'package:weather_forecast/functioning/get_weekly.dart';
 import 'package:weather_forecast/pages/weekly_updates.dart';
-import 'package:weather_forecast/widgets/other_field.dart';
-import 'package:weather_forecast/widgets/temp_field.dart';
+import 'package:weather_forecast/widgets/display/info_field.dart';
+import 'package:weather_forecast/widgets/display/temp_field.dart';
 import 'package:change_case/change_case.dart';
 
 class Page2 extends StatefulWidget {
@@ -155,11 +155,11 @@ class _Page2State extends State<Page2> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Field(info: 'Humidity ', info_image: 'precipitation.png',
-                        value: "${widget.humidity.toString()} %",fontsize: 25,),
-                      SizedBox(height: 30,),
-                      Field(info: 'Pressure ', info_image: 'pressure-gauge.png',
-                        value: widget.pressure_mb.toString(),fontsize: 25,),
+                      // Field(info: 'Humidity ', info_image: 'precipitation.png',
+                      //   value: "${widget.humidity.toString()} %",fontsize: 25,),
+                      // SizedBox(height: 30,),
+                      // Field(info: 'Pressure ', info_image: 'pressure-gauge.png',
+                      //   value: widget.pressure_mb.toString(),fontsize: 25,),
                     ],),),
                 Container(
                   //color: Colors.red,
@@ -179,9 +179,9 @@ class _Page2State extends State<Page2> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Field(info: 'Coordinates ',
-                                info_image: 'location.png',
-                                value: get_coord(widget.lat,widget.lon), fontsize: 20,),
+                              // Field(info: 'Coordinates ',
+                              //   info_image: 'location.png',
+                              //   value: get_coord(widget.lat,widget.lon), fontsize: 20,),
                             ],
                           ),
                         ),
@@ -198,8 +198,8 @@ class _Page2State extends State<Page2> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Field(info: 'Wind ', info_image: 'wind-power.png',
-                                value: "${widget.wind_mph.toString()} km/hr",fontsize: 25,),
+                              // Field(info: 'Wind ', info_image: 'wind-power.png',
+                              //   value: "${widget.wind_mph.toString()} km/hr",fontsize: 25,),
                             ],
                           ),
                         ),

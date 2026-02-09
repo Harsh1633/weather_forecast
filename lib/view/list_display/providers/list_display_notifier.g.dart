@@ -7,12 +7,12 @@ part of 'list_display_notifier.dart';
 // **************************************************************************
 
 String _$listDisplayNotifierHash() =>
-    r'bf646b55244ea16d95a274e37cf7d2379c1b3b56';
+    r'c897775076c4b83763a363079ea18f8310089512';
 
 /// See also [ListDisplayNotifier].
 @ProviderFor(ListDisplayNotifier)
-final listDisplayNotifierProvider =
-    AutoDisposeNotifierProvider<ListDisplayNotifier, int>.internal(
+final listDisplayNotifierProvider = AutoDisposeNotifierProvider<
+    ListDisplayNotifier, WeeklyDataResponseModel?>.internal(
   ListDisplayNotifier.new,
   name: r'listDisplayNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final listDisplayNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ListDisplayNotifier = AutoDisposeNotifier<int>;
+typedef _$ListDisplayNotifier = AutoDisposeNotifier<WeeklyDataResponseModel?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

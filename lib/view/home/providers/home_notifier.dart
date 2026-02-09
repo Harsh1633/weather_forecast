@@ -13,9 +13,6 @@ part 'home_notifier.g.dart';
 
 @riverpod
 class HomeNotifier extends _$HomeNotifier{
-  final dio = Dio();
-
-
 
   @override
   CurrentLocationResponseModel? build() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_forecast/core/colors/app_colors.dart';
+import 'package:weather_forecast/view/list_display/providers/list_display_notifier.dart';
 
 class ListDisplayScreen extends ConsumerStatefulWidget {
   const ListDisplayScreen({super.key});
@@ -10,10 +11,20 @@ class ListDisplayScreen extends ConsumerStatefulWidget {
 }
 
 class _ListDisplayScreenState extends ConsumerState<ListDisplayScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(listDisplayNotifierProvider.notifier).getWeeklyLocation();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:AppColors.primaryBlue,
+      backgroundColor: AppColors.primaryBlue,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -22,7 +33,7 @@ class _ListDisplayScreenState extends ConsumerState<ListDisplayScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: displayCard(),
-              )
+              ),
             ],
           ),
         ),
@@ -31,32 +42,24 @@ class _ListDisplayScreenState extends ConsumerState<ListDisplayScreen> {
   }
 
   Widget displayCard() => Container(
-    width: MediaQuery.sizeOf(context).width,
-    height: MediaQuery.sizeOf(context).height * 0.2,
-    decoration: BoxDecoration(
-      gradient: LinearGradient(
-        colors: [
-          AppColors.blueBorder,
-          AppColors.tempColor2
-        ]
-      ),
-      boxShadow: [
-        BoxShadow(
-            offset: Offset(4,4),
-            blurRadius: 12,
-            color: AppColors.tempColor2.withOpacity(0.5)
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height * 0.2,
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+              colors: [AppColors.blueBorder, AppColors.tempColor2]),
+          boxShadow: [
+            BoxShadow(
+                offset: const Offset(4, 4),
+                blurRadius: 12,
+                color: AppColors.tempColor2.withOpacity(0.5)),
+            BoxShadow(
+                offset: const Offset(-4, -4),
+                blurRadius: 12,
+                color: AppColors.grayBorder.withOpacity(0.25))
+          ],
         ),
-        BoxShadow(
-            offset: Offset(-4,-4),
-            blurRadius: 12,
-            color: AppColors.grayBorder.withOpacity(0.25)
-        )
-      ],
-    ),
-    child: Column(
-      children: [
-        Text("qasd")
-      ],
-    ),
-  );
+        child: const Column(
+          children: [Text("qasd")],
+        ),
+      );
 }

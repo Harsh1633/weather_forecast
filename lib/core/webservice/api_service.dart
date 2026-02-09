@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:weather_forecast/core/webservice/api_endpoints.dart';
 import 'package:weather_forecast/models/current_location_response_model.dart';
 import 'package:weather_forecast/models/search_response_model.dart';
+import 'package:weather_forecast/models/weekly_search_response_model.dart';
 
 
 part 'api_service.g.dart';
@@ -18,7 +19,7 @@ abstract class ApiService {
       );
 
   @GET(FinxAPIs.forecast)
-  Future<HttpResponse<CurrentLocationResponseModel>> forecastData(
+  Future<HttpResponse<WeeklyDataResponseModel>> forecastData(
       @Query('key') String key,
       @Query('q') String location,
       @Query('days') String days,

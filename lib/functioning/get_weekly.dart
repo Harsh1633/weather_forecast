@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:weather_forecast/functioning/get_date_for_weekly.dart';
 import 'dart:convert';
 
-import 'package:weather_forecast/widgets/weekly_field.dart';
+import 'package:weather_forecast/widgets/display/weekly_field.dart';
 
 Future<List<WeeklyField>> getWeeklyData(String city) async {
   try {

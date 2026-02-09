@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:weather_forecast/pages/page2.dart';
-import 'package:weather_forecast/widgets/textfield.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -76,8 +75,8 @@ class _Page1State extends State<Page1> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Field(description_text: 'Enter your Name', controller: nameController),
-          Field(description_text: "Enter your city",controller: cityController,),
+          // Field(description_text: 'Enter your Name', controller: nameController),
+          // Field(description_text: "Enter your city",controller: cityController,),
           SizedBox(height: MediaQuery.of(context).size.height *0.03,),
           ElevatedButton(onPressed: ()async{
             //fetchWeatherData();

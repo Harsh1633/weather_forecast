@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_forecast/pages/weekly_updates.dart';
 import 'package:weather_forecast/view/app_dashboard/providers/app_dashboard_notifier.dart';
 import 'package:weather_forecast/view/home/screen/home_screen.dart';
 import 'package:weather_forecast/view/list_display/screen/list_display_screen.dart';
@@ -53,7 +54,8 @@ class _AppDashboardScreenState extends ConsumerState<AppDashboardScreen> {
         children: const [
           HomeScreen(),
           ListDisplayScreen(),
-          SearchScreen(),
+          // SearchScreen(),
+          Weekly()
         ],
       ),
       bottomNavigationBar: const AppBottomNav(),

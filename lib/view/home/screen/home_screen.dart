@@ -8,8 +8,8 @@ import 'package:weather_forecast/core/colors/app_colors.dart';
 import 'package:weather_forecast/functioning/get_animation.dart';
 import 'package:weather_forecast/functioning/get_coordinate.dart';
 import 'package:weather_forecast/view/home/providers/home_notifier.dart';
-import 'package:weather_forecast/widgets/other_field.dart';
-import 'package:weather_forecast/widgets/temp_field.dart';
+import 'package:weather_forecast/widgets/display/info_field.dart';
+import 'package:weather_forecast/widgets/display/temp_field.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -194,22 +194,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Field(
+                              InfoField(
                                 info: 'Humidity ',
-                                info_image: 'precipitation.png',
+                                infoImage: 'precipitation.png',
                                 value: "${weatherData?.current?.humidity} %",
-                                fontsize: 25,
+                                fontSize: 25,
                               ),
                               const SizedBox(
                                 height: 30,
                               ),
-                              Field(
+                              InfoField(
                                 info: 'Pressure ',
-                                info_image: 'pressure-gauge.png',
+                                infoImage: 'pressure-gauge.png',
                                 value: weatherData?.current?.pressureIn
                                         ?.toString() ??
                                     '',
-                                fontsize: 25,
+                                fontSize: 25,
                               ),
                             ],
                           ),
@@ -250,13 +250,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Field(
+                                    InfoField(
                                       info: 'Coordinates ',
-                                      info_image: 'location.png',
+                                      infoImage: 'location.png',
                                       value: get_coord(
                                           weatherData?.location?.lat ?? 0.0,
                                           weatherData?.location?.lon ?? 0.0),
-                                      fontsize: 20,
+                                      fontSize: 20,
                                     ),
                                   ],
                                 ),
@@ -294,11 +294,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Field(
+                                    InfoField(
                                       info: 'Wind ',
-                                      info_image: 'wind-power.png',
+                                      infoImage: 'wind-power.png',
                                       value: "${weatherData?.current?.windKph.toString()} km/hr",
-                                      fontsize: 25,
+                                      fontSize: 25,
                                     ),
                                   ],
                                 ),

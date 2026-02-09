@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class Field extends StatelessWidget {
-  final String info,info_image,value;
-  final double? fontsize;
-  //final Image info_image;
-  //final double value;
-  const Field({super.key, required this.info, required this.info_image,
-    required this.value, required this.fontsize});
+class InfoField extends StatelessWidget {
+  final String info,infoImage,value;
+  final double? fontSize;
+
+  const InfoField({super.key, required this.info, required this.infoImage,
+    required this.value, required this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +21,15 @@ class Field extends StatelessWidget {
                   fontFamily: "Crimson"
 
               ),),
-              Container(height: 25, width: 25,
-                child: Image.asset('assets/icons/$info_image'),)
+              SizedBox(height: 25, width: 25,
+                child: Image.asset('assets/icons/$infoImage'),)
             ],
 
           ),
         ),
         Text(value.toString(), style: TextStyle(
             color: Color.fromRGBO(203, 195, 227, 1),
-            fontSize: fontsize
+            fontSize: fontSize
         ))
 
       ],

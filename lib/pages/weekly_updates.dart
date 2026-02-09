@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_forecast/functioning/get_weekly.dart';
 import 'package:weather_forecast/pages/page1.dart';
-import 'package:weather_forecast/widgets/weekly_field.dart';
+import 'package:weather_forecast/widgets/display/weekly_field.dart';
 
 class Weekly extends StatefulWidget {
   const Weekly({Key? key}) : super(key: key);
@@ -23,11 +23,11 @@ class _WeeklyState extends State<Weekly> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            Container(width: 200,height: 200,color: Colors.greenAccent,),
+            // Container(width: 200,height: 200,color: Colors.greenAccent,),
             FutureBuilder<List<WeeklyField>>(
               future: weeklyDataFuture,
               builder: (context, snapshot) {
