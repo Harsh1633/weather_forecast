@@ -15,4 +15,5 @@ class AppColors{
   static const Color darkPrimary = Color(0xFFD7B845);
   static const Color darkInput = Color(0xFF0C1622);
   static const Color darkCard = Color(0xFFD7B845);
+  static const Color blue = Color(0xFF1b3158);
 }
