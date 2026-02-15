@@ -20,7 +20,7 @@ class HomeNotifier extends _$HomeNotifier{
   }
 
 
-  Future<void> getCurrentLocationData() async {
+  Future<void> getCurrentLocationData({bool? fromSearch = false, String? searchCity}) async {
 
     final apiService = ref.read(apiServiceProvider);
 
@@ -29,7 +29,7 @@ class HomeNotifier extends _$HomeNotifier{
       final city = await LocationService.getCurrentCity();
 
       final response =
-      await apiService.currentData(API_KEY, city);
+      await apiService.currentData(API_KEY, fromSearch?? false ? (searchCity ?? '') :  city);
 
       // ✅ update state
       state = response.data;
@@ -39,6 +39,8 @@ class HomeNotifier extends _$HomeNotifier{
     }
   }
 
-
+  void clearWeather() {
+    state = null;
+  }
 
 }

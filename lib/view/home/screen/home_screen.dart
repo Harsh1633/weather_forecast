@@ -8,6 +8,7 @@ import 'package:weather_forecast/functioning/helpers.dart';
 import 'package:weather_forecast/view/home/providers/home_notifier.dart';
 import 'package:weather_forecast/widgets/display/info_field.dart';
 import 'package:weather_forecast/widgets/display/temp_field.dart';
+import 'package:weather_forecast/widgets/gradient_container/gradient_info_container.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -108,55 +109,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Center(
-                        child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                offset: const Offset(5, 5),
-                                blurRadius: 5,
-                                color: Colors.black.withOpacity(0.25)),
-                            BoxShadow(
-                                offset: const Offset(-2, -2),
-                                blurRadius: 4,
-                                color: AppColors.grayBorder.withOpacity(0.2))
-                          ],
-                          gradient: const LinearGradient(colors: [
-                            AppColors.tempColor1,
-                            AppColors.tempColor2
-                          ]),
-                          border: Border.all(
-                              width: 1,
-                              color: AppColors.grayBorder.withOpacity(0.5)),
-                          borderRadius: BorderRadius.circular(8)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TempField(
-                              unit: '°Celsius',
-                              value:
-                                  weatherData?.current?.tempC.toString() ?? ''),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          TempField(
-                              unit: '°Fahrenheit',
-                              value: weatherData?.current?.tempF.toString() ??
-                                  ''.toString()),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          TempField(
-                              unit: 'Kelvin',
-                              value: ((weatherData?.current?.tempC ?? 0) + 273)
-                                  .toString()),
-                        ],
-                      ),
+                  Center(
+                    child: GradientInfoContainer(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TempField(
+                            unit: '°Celsius',
+                            value:
+                            weatherData?.current?.tempC.toString() ?? ''),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        TempField(
+                            unit: '°Fahrenheit',
+                            value: weatherData?.current?.tempF.toString() ??
+                                ''.toString()),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        TempField(
+                            unit: 'Kelvin',
+                            value: ((weatherData?.current?.tempC ?? 0) + 273)
+                                .toString()),
+                      ],
                     )),
                   ),
                   Padding(
@@ -213,93 +192,39 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                         Column(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          //mainAxisSize: MainAxisSize.min,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 0, 5),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.13,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        offset: const Offset(6, 6),
-                                        blurRadius: 12,
-                                        color: AppColors.tempColor2
-                                            .withOpacity(0.5)),
-                                    BoxShadow(
-                                        offset: const Offset(-6, -6),
-                                        blurRadius: 12,
-                                        color: AppColors.tempColor1
-                                            .withOpacity(0.25))
-                                  ],
-                                  gradient: const LinearGradient(colors: [
-                                    AppColors.tempColor1,
-                                    AppColors.tempColor2
-                                  ]),
-                                  border: Border.all(
-                                      color:
-                                          AppColors.grayBorder.withOpacity(0.5),
-                                      width: 1),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    InfoField(
-                                      info: 'Coordinates ',
-                                      infoImage: 'location.png',
-                                      value: Helpers().getCoordinates(
-                                          weatherData?.location?.lat ?? 0.0,
-                                          weatherData?.location?.lon ?? 0.0),
-                                      fontSize: 20,
-                                    ),
-                                  ],
-                                ),
+                            GradientInfoContainer(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: MediaQuery.of(context).size.height * 0.13,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  InfoField(
+                                    info: 'Coordinates ',
+                                    infoImage: 'location.png',
+                                    value: Helpers().getCoordinates(
+                                        weatherData?.location?.lat ?? 0.0,
+                                        weatherData?.location?.lon ?? 0.0),
+                                    fontSize: 20,
+                                  ),
+                                ],
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 10, 0, 0),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.13,
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        offset: const Offset(6, 6),
-                                        blurRadius: 12,
-                                        color: AppColors.tempColor2
-                                            .withOpacity(0.5)),
-                                    BoxShadow(
-                                        offset: const Offset(-6, -6),
-                                        blurRadius: 12,
-                                        color: AppColors.tempColor1
-                                            .withOpacity(0.25))
-                                  ],
-                                  gradient: const LinearGradient(colors: [
-                                    AppColors.tempColor1,
-                                    AppColors.tempColor2
-                                  ]),
-                                  border: Border.all(
-                                      color:
-                                          AppColors.grayBorder.withOpacity(0.5),
-                                      width: 1),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    InfoField(
-                                      info: 'Wind ',
-                                      infoImage: 'wind-power.png',
-                                      value: "${weatherData?.current?.windKph.toString()} km/hr",
-                                      fontSize: 25,
-                                    ),
-                                  ],
-                                ),
+                            SizedBox(height: 10,),
+                            GradientInfoContainer(
+                              width: MediaQuery.of(context).size.width * 0.5,
+                              height: MediaQuery.of(context).size.height * 0.13,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  InfoField(
+                                    info: 'Wind ',
+                                    infoImage: 'wind-power.png',
+                                    value:
+                                        "${weatherData?.current?.windKph.toString()} km/hr",
+                                    fontSize: 25,
+                                  ),
+                                ],
                               ),
                             ),
                           ],
