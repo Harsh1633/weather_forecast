@@ -18,7 +18,7 @@ class TempField extends StatelessWidget {
           ),
           Text(
             unit,
-            style: TextStyle(
+            style: const TextStyle(
                 color: AppColors.darkSubText,
                 fontSize: 20,
                 // fontWeight: FontWeight.w500,

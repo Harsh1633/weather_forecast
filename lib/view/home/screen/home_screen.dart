@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_forecast/core/colors/app_colors.dart';
-import 'package:weather_forecast/functioning/get_animation.dart';
-import 'package:weather_forecast/functioning/get_coordinate.dart';
+import 'package:weather_forecast/functioning/helpers.dart';
 import 'package:weather_forecast/view/home/providers/home_notifier.dart';
 import 'package:weather_forecast/widgets/display/info_field.dart';
 import 'package:weather_forecast/widgets/display/temp_field.dart';
@@ -94,7 +92,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         child: Opacity(
                             opacity: 0.4,
                             child: Lottie.asset(
-                                'assets/animations/${get_animation(weatherData?.current?.condition?.text ?? '')}')),
+                                'assets/animations/${Helpers().getAnimation(weatherData?.current?.condition?.text ?? '')}')),
                       ),
                     ),
                   ),
@@ -253,7 +251,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     InfoField(
                                       info: 'Coordinates ',
                                       infoImage: 'location.png',
-                                      value: get_coord(
+                                      value: Helpers().getCoordinates(
                                           weatherData?.location?.lat ?? 0.0,
                                           weatherData?.location?.lon ?? 0.0),
                                       fontSize: 20,

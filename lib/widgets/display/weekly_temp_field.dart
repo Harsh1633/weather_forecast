@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_forecast/core/assets/app_assets.dart';
 import 'package:weather_forecast/core/colors/app_colors.dart';
-import 'package:weather_forecast/functioning/get_icon.dart';
+import 'package:weather_forecast/functioning/helpers.dart';
 import 'package:weather_forecast/models/weekly_search_response_model.dart';
 
 class WeeklyTempField extends ConsumerStatefulWidget {
@@ -32,43 +33,51 @@ class _WeeklyTempFieldState extends ConsumerState<WeeklyTempField> {
                   blurRadius: 4,
                   color: AppColors.grayBorder.withOpacity(0.2))
             ],
-            gradient: const LinearGradient(colors: [
-              AppColors.tempColor1,
-              AppColors.tempColor2
-            ]),
+            gradient: const LinearGradient(
+                colors: [AppColors.tempColor1, AppColors.tempColor2]),
             border: Border.all(
-                width: 1,
-                color: AppColors.grayBorder.withOpacity(0.5)),
+                width: 1, color: AppColors.grayBorder.withOpacity(0.5)),
             borderRadius: BorderRadius.circular(8)),
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.circular(12),
-        //   gradient: const LinearGradient(
-        //       colors: [AppColors.blueBorder, AppColors.tempColor2]),
-        //   boxShadow: [
-        //     BoxShadow(
-        //         offset: const Offset(2, 2),
-        //         blurRadius: 8,
-        //         color: AppColors.tempColor2.withOpacity(0.5)),
-        //     BoxShadow(
-        //         offset: const Offset(-2, -2),
-        //         blurRadius: 8,
-        //         color: AppColors.grayBorder.withOpacity(0.25))
-        //   ],
-        // ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+          child: Row(
             children: [
               Text(
-                DateFormat('dd-MMM-yyyy')
+                DateFormat('dd MMM')
                     .format(widget.forecast.date ?? DateTime.now()),
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
               ),
-              entryDetails(
-                  key: "Temp(C)",
-                  value: (widget.forecast.day?.avgtempC ?? 0).toString(),
-                  alignment: CrossAxisAlignment.start)
+              const SizedBox(
+                width: 16,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(widget.forecast.day?.condition?.text ?? '',
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 18)),
+                  Row(
+                    children: [
+                      entryField(
+                          detail:
+                              "${widget.forecast.day?.avghumidity.toString()}%",
+                          icon: AppAssets.humidity),
+                      entryField(
+                          detail: "${widget.forecast.day?.avgtempC.toString()}",
+                          icon: AppAssets.celsius),
+                      entryField(
+                          detail: "${widget.forecast.day?.avgtempF.toString()}",
+                          icon: AppAssets.fahrenheit),
+                    ],
+                  )
+                ],
+              ),
+              Spacer(),
+              Image.asset(
+                "assets/icons/display/${Helpers().getIcon(widget.forecast.day?.condition?.text ?? '')}",
+                width: 50,
+                height: 50,
+              )
             ],
           ),
         ),
@@ -77,21 +86,16 @@ class _WeeklyTempFieldState extends ConsumerState<WeeklyTempField> {
   }
 }
 
-Widget entryDetails(
-        {required String key,
-        required String value,
-        required CrossAxisAlignment alignment}) =>
-    Column(
-      crossAxisAlignment: alignment,
+Widget entryField({required String detail, required String icon}) => Row(
       children: [
-        Text(
-          key,
-          style: const TextStyle(fontSize: 12, color: AppColors.darkSubText),
+        Text(detail, style: const TextStyle(color: Colors.white, fontSize: 18)),
+        Padding(
+          padding: const EdgeInsets.only(left: 3, right: 12),
+          child: SizedBox(
+            height: 16,
+            width: 16,
+            child: Image.asset(icon),
+          ),
         ),
-        Text(value,
-            style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: AppColors.blue.withOpacity(0.9)))
       ],
     );
